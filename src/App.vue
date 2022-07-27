@@ -1,19 +1,21 @@
 <template>
   <router-view/>
+  
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style>
+* {
+    font-family: Arial;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
 
-body {
-  background-color: #2c3e50;
-  margin: 0;
-  padding: 0;
-}
+  html, body, #app {
+    background-color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
