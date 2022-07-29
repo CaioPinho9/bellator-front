@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import Message from '../components/Message.vue'
 import Login from '../components/Login.vue';
 
 export default {
@@ -16,7 +15,6 @@ export default {
     }
   },
   components: {
-    Message,
     Login
   }
 }

@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Login</h1>
-    <Message :msg="msg" :normal="false" :success="success" v-show="msg">Mensagem</Message>
     <div>
       <form id="login-form">
         
@@ -41,19 +40,16 @@
 </template>
 
 <script>
-import Message from './Message.vue'
 
 export default {
 
   name: "Login",
   data() {
     return {
-      msg: null,
       success: null,
     }
   },
   components: {
-    Message
   }
 }
 </script>
@@ -72,6 +68,7 @@ export default {
     margin: 0;
     font-size: 14px;
     color: #1496de;
+    transition: .5s;
   }
 
   #login-form {
@@ -125,17 +122,17 @@ export default {
   }
 
   .sign-up {
-    padding: 5px;
-    padding-top: 8px;
-    font-size: large;
-    text-align: center;
+    padding: 0;
+    padding-top: 3px;
+    text-align: right;
     background-color: rgba(0, 0, 0, 0);
     border-style: none;
     cursor: pointer;
     transition: .5s;
+    text-decoration: underline;
   }
 
-  .sign-up:hover {
+  .sign-up:hover, a:hover {
     color: #fff;
   }
 

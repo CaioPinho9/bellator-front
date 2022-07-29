@@ -1,32 +1,36 @@
 <template>
   <div>
     <h1>Register</h1>
-    <Message :msg="msg" :normal="false" :success="success" v-show="msg">Mensagem</Message>
     <div>
-      <form id="login-form">
+      <form id="login-form" @submit.prevent="handleSubmit">
         
         <div class="input-container">
           <label class="input-label" for="email">Email</label>
-          <input type="text" class="input" id="email" name="email" placeholder="Enter Email">
+          <input @focus="removeError" v-model="email" type="text" class="input" id="email" name="email" placeholder="Enter Email">
         </div>
 
         <div class="input-container">
           <label class="input-label" for="firstName">First Name</label>
-          <input type="text" class="input" id="firstName" name="firstName" placeholder="Enter First Name">
+          <input @focus="removeError" v-model="firstName" type="text" class="input" id="firstName" name="firstName" placeholder="Enter First Name">
         </div>
         <div class="input-container">
           <label class="input-label" for="lastName">Last Name</label>
-          <input type="text" class="input" id="lastName" name="lastName" placeholder="Enter Last Name">
+          <input @focus="removeError" v-model="lastName" type="text" class="input" id="lastName" name="lastName" placeholder="Enter Last Name">
         </div>
 
         <div class="input-container">
           <label class="input-label" for="password">Password</label>
-          <input type="password" class="input" id="password" name="password" placeholder="Enter Password">
+          <input @focus="removeError" v-model="password" type="password" class="input" id="password" name="password" placeholder="Enter Password">
+        </div>
+
+        <div class="input-container">
+          <label class="input-label" for="confirmPassword">Confirm Password</label>
+          <input @focus="removeError" v-model="confirmPassword" type="password" class="input" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
         </div>
 
         <div class="button-container">
           <div class="button">
-            <input type="submit" class="submit-btn" value="Register">
+            <input @focus="removeError" type="submit" class="submit-btn" value="Register">
           </div>
 
           <div class="button">
@@ -39,11 +43,10 @@
             <input id="check" type="checkbox" name="Remember me">
             <span>Remember me</span>
           </div>
-            <a v-show="!(signUp)" href="">Forgot password?</a>
-        </div>
-
-        <div class="login">
-          <input @click="$router.push('/login')" type="button" class="login" value="Already have an account?">
+          
+          <div class="login">
+            <input @click="$router.push('/login')" type="button" class="login" value="Already have an account?">
+          </div>
         </div>
 
       </form>
@@ -52,19 +55,68 @@
 </template>
 
 <script>
-import Message from './Message.vue'
+import axios from 'axios'
 
 export default {
 
   name: "Register",
   data() {
     return {
-      msg: null,
-      success: null,
+      email: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+      confirmPassword: '',
     }
   },
   components: {
-    Message
+  },
+  methods: {
+    async handleSubmit(e) {
+      e.preventDefault()
+
+      const data = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+      }
+
+      console.log(process.env.VUE_APP_ROOT_API);
+
+      const dataJson = JSON.stringify(data)
+
+      console.log(dataJson);
+
+      if (data.password !== this.confirmPassword) {
+        document.getElementById('password').setAttribute("data-error", "")
+        document.getElementById('confirmPassword').setAttribute("data-error", "")
+        return
+      }
+
+      if (!this.checkError()) {
+        return
+      }
+
+      await axios.post('', dataJson, {
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      })
+
+    },
+    checkError() {
+      document.querySelectorAll(".input").forEach(input => {
+        if (input.value == "") {
+          input.setAttribute("data-error", "")
+          return false
+        }
+      })
+      return true
+    },
+    removeError(e) {
+      e.target.removeAttribute("data-error")
+    }
   }
 }
 </script>
@@ -74,7 +126,7 @@ export default {
   h1 {
     text-align: center;
     font-size: 30px;
-    padding-top: 80px;
+    padding-top: 20px;
     margin-bottom: 15px;
     color: #fff;
   }
@@ -136,13 +188,11 @@ export default {
   }
 
   .login {
-    padding: 5px;
-    padding-top: 10px;
-    text-align: center;
     background-color: rgba(0, 0, 0, 0);
     border-style: none;
     cursor: pointer;
     transition: .5s;
+    padding: 0;
   }
 
   .login:hover {
