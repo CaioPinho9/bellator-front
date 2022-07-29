@@ -12,7 +12,7 @@
   }
 
   html, body, #app {
-    background-color: #2c3e50;
+    background-color: #233240;
     margin: 0;
     padding: 0;
     width: 100%;

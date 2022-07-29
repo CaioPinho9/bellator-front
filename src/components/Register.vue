@@ -2,7 +2,7 @@
   <div>
     <h1>Register</h1>
     <div>
-      <form id="login-form" @submit.prevent="handleSubmit">
+      <form id="sign-up-form" @submit.prevent="handleSubmit">
         
         <div class="input-container">
           <label class="input-label" for="email">Email</label>
@@ -44,8 +44,8 @@
             <span>Remember me</span>
           </div>
           
-          <div class="login">
-            <input @click="$router.push('/login')" type="button" class="login" value="Already have an account?">
+          <div class="sign-up">
+            <input @click="$router.push('/login')" type="button" class="sign-up" value="Already have an account?">
           </div>
         </div>
 
@@ -131,20 +131,14 @@ export default {
     color: #fff;
   }
 
-  a{
-    margin: 0;
-    font-size: 14px;
-    color: #1496de;
-  }
-
-  #login-form {
+  #sign-up-form {
     max-width: 400px;
     margin: 0 auto;
     padding: 10px;
-    background-color: #333;
-    border: 4px solid #1496de;
+    background-color: #262a2b;
+    border: 4px solid #0f71a7;
     border-radius: 10px;
-    color: #1496de;
+    color: #33abed;
     }
 
   .input-container {
@@ -187,7 +181,7 @@ export default {
     white-space: nowrap;   
   }
 
-  .login {
+  .sign-up {
     background-color: rgba(0, 0, 0, 0);
     border-style: none;
     cursor: pointer;
@@ -195,7 +189,7 @@ export default {
     padding: 0;
   }
 
-  .login:hover {
+  .sign-up:hover {
     color: #fff;
   }
 
@@ -207,15 +201,15 @@ export default {
   }
 
   ::placeholder {
-    color: #1496de
+    color: #33abed
   }
 
   input {
     width: 100%;
-    padding: 5px 10px;
-    background-color: #555;
-    border: 1px solid #1496de;
-    color: #1496de;
+    padding: 5px 10px; 
+    background-color: #404548;
+    border: 1px solid #0f71a7;
+    color: #33abed;
   }
 
   .input[data-error] {
@@ -229,9 +223,9 @@ export default {
 
   .submit-btn {
     background-color: #222;
-    color: #1496de;
+    color: #33abed;
     font-weight: bold;
-    border: 2px solid #1496de;
+    border: 2px solid #0f71a7;
     padding: 10px;
     font-size: 16px;
     margin: 0 auto;
@@ -240,8 +234,8 @@ export default {
   }
 
   .submit-btn:hover {
-    background-color: #1496de;
-    border: 2px solid #1496de;
+    background-color: #33abed;
+    border: 2px solid #33abed;
     color: #fff;
   }
 </style>

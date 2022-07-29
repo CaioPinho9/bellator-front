@@ -31,8 +31,8 @@
             <a href="">Forgot password?</a>
         </div>
 
-        <div class="sign-up">
-          <input @click="$router.push('/register')" type="button" class="sign-up" value="SIGN UP">
+        <div class="login">
+          <input @click="$router.push('/register')" type="button" class="login" value="SIGN UP">
         </div>
       </form>
     </div>
@@ -67,7 +67,7 @@ export default {
   a{
     margin: 0;
     font-size: 14px;
-    color: #1496de;
+    color: #33abed;
     transition: .5s;
   }
 
@@ -75,10 +75,10 @@ export default {
     max-width: 400px;
     margin: 0 auto;
     padding: 10px;
-    background-color: #333;
-    border: 4px solid #1496de;
+    background-color: #262a2b;
+    border: 4px solid #0f71a7;
     border-radius: 10px;
-    color: #1496de;
+    color: #33abed;
     }
 
   .input-container {
@@ -121,7 +121,7 @@ export default {
     white-space: nowrap;   
   }
 
-  .sign-up {
+  .login {
     padding: 0;
     padding-top: 3px;
     text-align: right;
@@ -132,7 +132,7 @@ export default {
     text-decoration: underline;
   }
 
-  .sign-up:hover, a:hover {
+  .login:hover, a:hover {
     color: #fff;
   }
 
@@ -144,15 +144,15 @@ export default {
   }
 
   ::placeholder {
-    color: #1496de
+    color: #33abed
   }
 
   input {
     width: 100%;
-    padding: 5px 10px;
-    background-color: #555;
-    border: 1px solid #1496de;
-    color: #1496de;
+    padding: 5px 10px; 
+    background-color: #404548;
+    border: 1px solid #0f71a7;
+    color: #33abed;
   }
 
   .input[data-error] {
@@ -166,9 +166,9 @@ export default {
 
   .submit-btn {
     background-color: #222;
-    color: #1496de;
+    color: #33abed;
     font-weight: bold;
-    border: 2px solid #1496de;
+    border: 2px solid #0f71a7;
     padding: 10px;
     font-size: 16px;
     margin: 0 auto;
@@ -177,8 +177,8 @@ export default {
   }
 
   .submit-btn:hover {
-    background-color: #1496de;
-    border: 2px solid #1496de;
+    background-color: #33abed;
+    border: 2px solid #33abed;
     color: #fff;
   }
 </style>
