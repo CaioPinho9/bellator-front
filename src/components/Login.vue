@@ -31,8 +31,8 @@
             <a href="">Forgot password?</a>
         </div>
 
-        <div class="login">
-          <input @click="$router.push('/register')" type="button" class="login" value="SIGN UP">
+        <div class="register">
+          <input @click="$router.push('/register')" type="button" class="register" value="SIGN UP">
         </div>
       </form>
     </div>
@@ -121,7 +121,7 @@ export default {
     white-space: nowrap;   
   }
 
-  .login {
+  .register {
     padding: 0;
     padding-top: 3px;
     text-align: right;
@@ -132,7 +132,7 @@ export default {
     text-decoration: underline;
   }
 
-  .login:hover, a:hover {
+  .register:hover, a:hover {
     color: #fff;
   }
 

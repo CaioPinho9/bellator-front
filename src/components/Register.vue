@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <ConfirmationEmail :data="data" v-if="confirmation"/>
+  <div v-else>  
     <h1>Register</h1>
     <div>
       <form id="sign-up-form" @submit.prevent="handleSubmit">
@@ -44,8 +45,8 @@
             <span>Remember me</span>
           </div>
           
-          <div class="sign-up">
-            <input @click="$router.push('/login')" type="button" class="sign-up" value="Already have an account?">
+          <div class="login">
+            <input @click="$router.push('/login')" type="button" class="login" value="Already have an account?">
           </div>
         </div>
 
@@ -56,6 +57,8 @@
 
 <script>
 import axios from 'axios'
+import ConfirmationEmail from '../components/ConfirmationEmail.vue';
+
 
 export default {
 
@@ -67,9 +70,12 @@ export default {
       lastName: '',
       password: '',
       confirmPassword: '',
+      data: null,
+      confirmation: false
     }
   },
   components: {
+    ConfirmationEmail
   },
   methods: {
     async handleSubmit(e) {
@@ -81,6 +87,8 @@ export default {
         email: this.email,
         password: this.password,
       }
+
+      this.data = data
 
       console.log(process.env.VUE_APP_ROOT_API);
 
@@ -103,7 +111,7 @@ export default {
         'Content-Type': 'application/json'
         }
       })
-
+      this.confirmation = true
     },
     checkError() {
       document.querySelectorAll(".input").forEach(input => {
@@ -173,7 +181,6 @@ export default {
   }
 
   #remember-me {
-    margin-top: 1px;
     display: flex;
     flex-direction: row;  
     flex-wrap: nowrap;
@@ -181,15 +188,16 @@ export default {
     white-space: nowrap;   
   }
 
-  .sign-up {
+  .login {
     background-color: rgba(0, 0, 0, 0);
     border-style: none;
     cursor: pointer;
     transition: .5s;
     padding: 0;
+    font-size: 14px;
   }
 
-  .sign-up:hover {
+  .login:hover {
     color: #fff;
   }
 
