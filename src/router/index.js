@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import OrderView from '../views/OrderView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
+import ResponseView from '../views/ResponseView.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: RegisterView
+  },
+  {
+    path: '/response/token=:token',
+    name: 'response',
+    component: ResponseView
   }
 ]
 
