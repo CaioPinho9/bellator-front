@@ -2,16 +2,16 @@
   <div>
     <h1>Login</h1>
     <div>
-      <form id="login-form">
+      <form id="login-form" @submit.prevent="handleSubmit">
         
         <div class="input-container">
           <label class="input-label" for="email">Email</label>
-          <input type="text" class="input" id="email" name="email" placeholder="Enter Email">
+          <input v-model="email" type="text" class="input" id="email" name="email" placeholder="Enter Email">
         </div>
 
         <div class="input-container">
           <label class="input-label" for="password">Password</label>
-          <input type="password" class="input" id="password" name="password" placeholder="Enter Password">
+          <input v-model="password" type="password" class="input" id="password" name="password" placeholder="Enter Password">
         </div>
 
         <div class="button-container">
@@ -46,10 +46,50 @@ export default {
   name: "Login",
   data() {
     return {
+      email: '',
+      password: '',
       success: null,
     }
   },
-  components: {
+  methods: {
+    async handleSubmit(e) {
+      e.preventDefault()
+
+      var axios = require('axios');
+      var qs = require('qs');
+      var data = qs.stringify({
+        'email': this.email,
+        'password': this.password
+      });
+      var config = {
+        method: 'post',
+        url: 'login',
+        headers: { 
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: data
+      };
+
+      var response
+      await axios(config)
+      .then(function (data) {
+        response = data
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      sessionStorage.setItem('Access-Token', response.data.accessToken)
+      sessionStorage.setItem('Refresh-Token', response.data.refreshToken)
+
+      if (document.getElementById("check").checked) {
+        localStorage.setItem('Access-Token', response.data.accessToken)
+        localStorage.setItem('Refresh-Token', response.data.refreshToken)
+      } else if (localStorage.getItem('Access-Token')) {
+        localStorage.removeItem('Access-Token')
+        localStorage.removeItem('Refresh-Token')
+      }
+    }
   }
 }
 </script>

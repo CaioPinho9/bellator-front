@@ -106,7 +106,7 @@ export default {
         return
       }
 
-      await axios.post('', dataJson, {
+      await axios.post('registration', dataJson, {
         headers: {
         'Content-Type': 'application/json'
         }

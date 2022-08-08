@@ -6,6 +6,9 @@
         <router-link to="/pedidos">Orders</router-link>
         <p>|</p>
         <router-link to="/login">Login</router-link>
+        <p id="login">|</p>
+        <router-link to="/register">Sign up</router-link>
+
     </div>
 </template>
 
@@ -46,12 +49,11 @@ export default {
     #nav a,p {
         color: #1496de ;
         text-decoration: none;
-        margin: 12px;
+        margin: 10px;
         transition: .5s;
     }
 
     #nav a:hover {
         color: #FFF;
     }
-
 </style>
