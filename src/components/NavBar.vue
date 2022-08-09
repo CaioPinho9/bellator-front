@@ -5,16 +5,30 @@
         </router-link>
         <router-link to="/pedidos">Orders</router-link>
         <p>|</p>
-        <router-link to="/login">Login</router-link>
-        <p id="login">|</p>
-        <router-link to="/register">Sign up</router-link>
+        <router-link v-show="!logged" to="/login">Login</router-link>
+        <p id="login" v-show="!logged">|</p>
+        <router-link v-show="!logged" to="/register">Sign up</router-link>
+        <input @click=logout() type="button" v-show="logged" value="Logout">
+
 
     </div>
 </template>
 
 <script>
 export default {
-    name: 'NavBar'
+    name: 'NavBar',
+    props: {
+      logged: Boolean
+    },
+    methods: {
+      logout() {
+        sessionStorage.removeItem('Access-Token')
+        sessionStorage.removeItem('Refresh-Token')
+        localStorage.removeItem('Access-Token')
+        localStorage.removeItem('Refresh-Token')
+        this.$router.go()
+      }
+    }
 }
 </script>
 
@@ -46,11 +60,17 @@ export default {
 
     }
 
-    #nav a,p {
+    #nav a,p,input {
         color: #1496de ;
         text-decoration: none;
         margin: 10px;
         transition: .5s;
+        border: 0px;
+        font-size: medium;
+    }
+    
+    input:hover {
+        color: #FFF;
     }
 
     #nav a:hover {

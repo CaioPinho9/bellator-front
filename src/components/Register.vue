@@ -59,7 +59,6 @@
 import axios from 'axios'
 import ConfirmationEmail from '../components/ConfirmationEmail.vue';
 
-
 export default {
 
   name: "Register",

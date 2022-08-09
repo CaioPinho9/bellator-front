@@ -40,7 +40,7 @@
 </template>
 
 <script>
-
+import User from '../User.js'
 export default {
 
   name: "Login",
@@ -50,6 +50,9 @@ export default {
       password: '',
       success: null,
     }
+  },
+  mounted() {
+    User()
   },
   methods: {
     async handleSubmit(e) {
@@ -89,6 +92,7 @@ export default {
         localStorage.removeItem('Access-Token')
         localStorage.removeItem('Refresh-Token')
       }
+      this.$router.push('/')
     }
   }
 }
