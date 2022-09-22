@@ -3,14 +3,10 @@
         <router-link id="logo-url" to="/">
             <img id="logo" src="../assets/logo.png" alt="Bellator Logo">
         </router-link>
-        <router-link to="/pedidos">Orders</router-link>
-        <p>|</p>
         <router-link v-show="!logged" to="/login">Login</router-link>
         <p id="login" v-show="!logged">|</p>
         <router-link v-show="!logged" to="/register">Sign up</router-link>
         <input @click=logout() type="button" v-show="logged" value="Logout">
-
-
     </div>
 </template>
 

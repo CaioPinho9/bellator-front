@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <NavBar :logged="logged" />
+    <Product />
   </div>
 </template>
 
@@ -8,6 +9,7 @@
 // @ is an alias to /src
 import NavBar from "../components/NavBar.vue"
 import User from '../User.js'
+import Product from "@/components/Product.vue"
 
 export default {
   name: 'HomeView',
@@ -25,7 +27,8 @@ export default {
     }
   },
   components: {
-    NavBar
-  }
+    NavBar,
+    Product
+}
 }
 </script>
